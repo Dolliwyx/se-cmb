@@ -22,7 +22,9 @@ class ROCContinousResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Report of Collection (Continous)';
 
-    protected static ?string $navigationLabel = 'Continous Reports';
+    protected static ?string $navigationLabel = 'Continous Receipts';
+
+    protected static ?string $navigationGroup = 'Reports of Collection';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

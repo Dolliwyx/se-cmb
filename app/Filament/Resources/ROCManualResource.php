@@ -29,7 +29,9 @@ class ROCManualResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Report of Collection (Manual)';
 
-    protected static ?string $navigationLabel = 'Manual Reports';
+    protected static ?string $navigationLabel = 'Manual Receipts';
+
+    protected static ?string $navigationGroup = 'Reports of Collection';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
