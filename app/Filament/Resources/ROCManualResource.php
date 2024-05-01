@@ -7,6 +7,7 @@ use App\Filament\Resources\ROCManualResource\RelationManagers;
 use App\Models\ROCManual;
 use Filament\Forms;
 use Filament\Checkbox;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -17,6 +18,7 @@ use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -154,7 +156,19 @@ class ROCManualResource extends Resource
                     ->sortable(),
             ])
             ->filters([
-                //
+                Filter::make('created_at')
+                    ->form([
+                        DatePicker::make('created_at')
+                            ->default(today())
+                            ->label('Created At')
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['created_at'],
+                                fn (Builder $query, $value) => $query->whereDate('created_at', '=', $value)
+                            );
+                    })
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
