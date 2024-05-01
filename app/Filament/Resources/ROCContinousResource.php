@@ -6,10 +6,12 @@ use App\Filament\Resources\ROCContinousResource\Pages;
 use App\Filament\Resources\ROCContinousResource\RelationManagers;
 use App\Models\ROCContinous;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -120,10 +122,27 @@ class ROCContinousResource extends Resource
                     ->sortable(),
                 TextColumn::make('remarks')
                     ->label('Remarks')
+                    ->searchable(),
+                TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->dateTime()
                     ->searchable()
+                    ->sortable(),
             ])
             ->filters([
-                //
+                Filter::make('created_at')
+                    ->form([
+                        DatePicker::make('created_at')
+                            ->default(today())
+                            ->label('Created At')
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['created_at'],
+                                fn (Builder $query, $value) => $query->whereDate('created_at', '=', $value)
+                            );
+                    })
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
