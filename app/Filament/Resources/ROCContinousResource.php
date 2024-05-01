@@ -119,7 +119,6 @@ class ROCContinousResource extends Resource
                 TextColumn::make('remarks')
                     ->label('Remarks')
                     ->searchable()
-                    ->sortable()
             ])
             ->filters([
                 //
