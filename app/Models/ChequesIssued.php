@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class ChequesIssued extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'cheque_number',
+        'payee',
+        'nature',
+        'amount',
+        'status',
+    ];
 }
