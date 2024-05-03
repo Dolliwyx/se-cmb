@@ -34,22 +34,22 @@ class ROCContinousResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('or_number')
+                TextInput::make('or_number')
                     ->label('OR Number')
                     ->required()
                     ->unique()
                     ->placeholder('Enter OR Number'),
-                Forms\Components\TextInput::make('payor_name')
+                TextInput::make('payor_name')
                     ->label('Payor Name')
                     ->required()
                     ->placeholder('Enter Payor Name'),
-                Forms\Components\TextInput::make('student_number')
+                TextInput::make('student_number')
                     ->label('Student Number')
                     ->required()
                     ->mask('9999-99999')
                     ->regex('/\d{4}-\d{5}/')
                     ->placeholder('20XX-XXXXX'),
-                Forms\Components\Select::make('college')
+                Select::make('college')
                     ->label('College')
                     ->required()
                     ->options([
@@ -64,23 +64,25 @@ class ROCContinousResource extends Resource
                         'COL' => 'College of Law',
                     ])
                     ->placeholder('Select College'),
-                Forms\Components\TextInput::make('transaction_code')
+                TextInput::make('transaction_code')
                     ->label('Transaction Code')
                     ->required()
                     ->placeholder('Enter Transaction Code'),
-                Forms\Components\TextInput::make('amount')
+                TextInput::make('amount')
                     ->label('Amount')
                     ->required()
                     ->numeric()
+                    ->prefix('PHP')
                     ->inputMode('decimal')
                     ->placeholder('Enter Amount'),
-                Forms\Components\TextInput::make('total_amount')
+                TextInput::make('total_amount')
                     ->label('Total Amount')
                     ->required()
                     ->numeric()
+                    ->prefix('PHP')
                     ->inputMode('decimal')
                     ->placeholder('Enter Total Amount'),
-                Forms\Components\Textarea::make('remarks')
+                Textarea::make('remarks')
                     ->label('Remarks')
                     ->required()
                     ->placeholder('Enter Remarks'),
