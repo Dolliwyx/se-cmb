@@ -79,12 +79,14 @@ class ROCManualResource extends Resource
                     ->label('Amount')
                     ->required()
                     ->numeric()
+                    ->prefix('PHP')
                     ->inputMode('decimal')
                     ->placeholder('Enter Amount'),
                 TextInput::make('total_amount')
                     ->label('Total Amount')
                     ->required()
                     ->numeric()
+                    ->prefix('PHP')
                     ->inputMode('decimal')
                     ->placeholder('Enter Total Amount'),
                 Textarea::make('remarks')
