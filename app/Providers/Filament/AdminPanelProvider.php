@@ -32,6 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->favicon(asset('images/favicon.png'))
             ->brandLogo(asset('images/plm-header.png'))
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->brandLogoHeight('4rem')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
