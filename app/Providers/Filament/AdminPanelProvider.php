@@ -27,9 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->colors([
-                'primary' => Color::Amber,
-            ])
+            ->darkMode(false)
             ->favicon(asset('images/favicon.png'))
             ->brandLogo(asset('images/plm-header.png'))
             ->viteTheme('resources/css/filament/admin/theme.css')
