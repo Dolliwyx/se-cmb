@@ -125,6 +125,9 @@ class ROCContinousResource extends Resource
                     ->sortable(),
                 TextColumn::make('total_amount')
                     ->label('Total Amount')
+                    ->getStateUsing(function ($record) {
+                        return ContinousReport::where('or_number', $record->or_number)->sum('amount');
+                    })
                     ->money('PHP')
                     ->sortable(),
                 TextColumn::make('remarks')

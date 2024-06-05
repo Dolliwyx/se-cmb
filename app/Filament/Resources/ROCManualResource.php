@@ -134,8 +134,10 @@ class ROCManualResource extends Resource
                     ->sortable(),
                 TextColumn::make('total_amount')
                     ->label('Total Amount')
+                    ->getStateUsing(function ($record) {
+                        return ManualReport::where('or_number', $record->or_number)->sum('amount');
+                    })
                     ->money('PHP')
-                    ->searchable()
                     ->sortable(),
                 TextColumn::make('remarks')
                     ->label('Remarks')
