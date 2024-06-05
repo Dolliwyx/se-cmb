@@ -81,16 +81,26 @@ class ROCContinousResource extends Resource
                     ->prefix('PHP')
                     ->inputMode('decimal')
                     ->placeholder('Enter Amount'),
-                TextInput::make('total_amount')
-                    ->label('Total Amount')
-                    ->required()
-                    ->numeric()
-                    ->prefix('PHP')
-                    ->inputMode('decimal')
-                    ->placeholder('Enter Total Amount'),
+                Toggle::make('has_cheque')
+                    ->label('Transaction with Cheque?')
+                    ->live()
+                    ->default(false),
                 Textarea::make('remarks')
                     ->label('Remarks')
                     ->placeholder('Enter Remarks'),
+                Group::make([
+                    TextInput::make('bank_name')
+                        ->label('Bank')
+                        ->placeholder('Enter Bank')
+                        ->requiredWith('has_cheque')
+                        ->disabled(fn ($livewire) => $livewire instanceof CreateROCContinous && $livewire->ORExists),
+                    TextInput::make('bank_number')
+                        ->label('Cheque Number')
+                        ->placeholder('Enter Cheque Number')
+                        ->requiredWith('has_cheque')
+                        ->disabled(fn ($livewire) => $livewire instanceof CreateROCContinous && $livewire->ORExists)
+                ])
+                    ->visible(fn (Get $get): bool => $get('has_cheque')),
             ]);
     }
 
