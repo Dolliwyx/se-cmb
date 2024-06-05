@@ -46,13 +46,15 @@ class ROCManualResource extends Resource
                 TextInput::make('payor_name')
                     ->label('Payor Name')
                     ->required()
-                    ->placeholder('Enter Payor Name'),
+                    ->placeholder('Enter Payor Name')
+                    ->disabled(fn ($livewire) => $livewire instanceof CreateROCManual && $livewire->ORExists),
                 TextInput::make('student_number')
                     ->label('Student Number')
                     ->required()
                     ->mask('9999-99999')
                     ->regex('/\d{4}-\d{5}/')
-                    ->placeholder('20XX-XXXXX'),
+                    ->placeholder('20XX-XXXXX')
+                    ->disabled(fn ($livewire) => $livewire instanceof CreateROCManual && $livewire->ORExists),
                 Select::make('college')
                     ->label('College')
                     ->required()
@@ -67,7 +69,8 @@ class ROCManualResource extends Resource
                         'CS' => 'College of Science',
                         'COL' => 'College of Law',
                     ])
-                    ->placeholder('Select College'),
+                    ->placeholder('Select College')
+                    ->disabled(fn ($livewire) => $livewire instanceof CreateROCManual && $livewire->ORExists),
                 TextInput::make('transaction_code')
                     ->label('Transaction Code')
                     ->required()
