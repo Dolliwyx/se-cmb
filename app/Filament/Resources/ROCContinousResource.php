@@ -90,7 +90,6 @@ class ROCContinousResource extends Resource
                     ->placeholder('Enter Total Amount'),
                 Textarea::make('remarks')
                     ->label('Remarks')
-                    ->required()
                     ->placeholder('Enter Remarks'),
             ]);
     }
