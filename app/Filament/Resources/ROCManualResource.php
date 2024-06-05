@@ -19,6 +19,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class ROCManualResource extends Resource
 {
@@ -166,6 +168,13 @@ class ROCManualResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
+                    ExportBulkAction::make()
+                        ->exports([
+                            ExcelExport::make()->fromModel()->except([
+                                'id',
+                                'transaction_type',
+                            ])->withFilename(date('Y-m-d') . ' Manual Report'),
+                        ]),
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
