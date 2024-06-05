@@ -114,7 +114,7 @@ class ROCContinousResource extends Resource
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('payor_name')
-                    ->label('Payor Name')
+                    ->label('Name')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('student_number')
