@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\ROCContinousResource\Pages;
 
 use App\Filament\Resources\ROCContinousResource;
+use EightyNine\ExcelImport\ExcelImportAction;
 use Filament\Actions;
-use Filament\Resources\Components\Tab;
 use Filament\Resources\Pages\ListRecords;
 
 class ListROCContinouses extends ListRecords
@@ -14,6 +14,7 @@ class ListROCContinouses extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
+            ExcelImportAction::make()->color('primary'),
             Actions\CreateAction::make(),
         ];
     }
