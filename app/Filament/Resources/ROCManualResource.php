@@ -79,17 +79,6 @@ class ROCManualResource extends Resource
                     ->prefix('PHP')
                     ->inputMode('decimal')
                     ->placeholder('Enter Amount'),
-                TextInput::make('total_amount')
-                    ->label('Total Amount')
-                    ->required()
-                    ->numeric()
-                    ->prefix('PHP')
-                    ->inputMode('decimal')
-                    ->placeholder('Enter Total Amount'),
-                Textarea::make('remarks')
-                    ->label('Remarks')
-                    ->required()
-                    ->placeholder('Enter Remarks'),
                 Toggle::make('has_cheque')
                     ->label('Transaction with Cheque?')
                     ->live()
