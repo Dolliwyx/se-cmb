@@ -100,7 +100,7 @@ class ROCManualResource extends Resource
                         ->placeholder('Enter Cheque Number')
                         ->requiredWith('has_cheque')
                 ])
-                    ->visible(fn (Get $get): bool => $get('has_cheque')),
+                    ->visible(fn (Get $get): bool => $get('has_cheque') || false),
             ]);
     }
 

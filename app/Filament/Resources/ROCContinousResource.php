@@ -102,7 +102,7 @@ class ROCContinousResource extends Resource
                         ->requiredWith('has_cheque')
                         ->disabled(fn ($livewire) => $livewire instanceof CreateROCContinous && $livewire->ORExists)
                 ])
-                    ->visible(fn (Get $get): bool => $get('has_cheque')),
+                    ->visible(fn (Get $get): bool => $get('has_cheque') || false),
             ]);
     }
 
