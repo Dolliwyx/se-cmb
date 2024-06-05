@@ -94,6 +94,9 @@ class ROCManualResource extends Resource
                     ->label('Transaction with Cheque?')
                     ->live()
                     ->default(false),
+                Textarea::make('remarks')
+                    ->label('Remarks')
+                    ->placeholder('Enter Remarks'),
                 Group::make([
                     TextInput::make('cheque_bank')
                         ->label('Bank')
