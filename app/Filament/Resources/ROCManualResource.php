@@ -41,7 +41,7 @@ class ROCManualResource extends Resource
                 TextInput::make('or_number')
                     ->label('OR Number')
                     ->required()
-                    ->unique()
+                    ->reactive()
                     ->placeholder('Enter OR Number'),
                 TextInput::make('payor_name')
                     ->label('Payor Name')
