@@ -142,12 +142,7 @@ class ROCContinousResource extends Resource
                     ->sortable(),
                 TextColumn::make('remarks')
                     ->label('Remarks')
-                    ->searchable(),
-                TextColumn::make('created_at')
-                    ->label('Created At')
-                    ->dateTime()
                     ->searchable()
-                    ->sortable(),
             ])
             ->filters([
                 Filter::make('created_at')
