@@ -146,6 +146,7 @@ class ROCContinousResource extends Resource
                     ->label('Remarks')
                     ->searchable()
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 Filter::make('created_at')
                     ->form([
