@@ -6,7 +6,8 @@
     background-color: rgb(43, 44, 135);
 }
 
-.fi-sidebar-item-label, .fi-sidebar-group-label {
+.fi-sidebar-item-label,
+.fi-sidebar-group-label {
     @apply text-gray-200;
 }
 
@@ -22,11 +23,20 @@
     @apply text-gray-100;
 }
 
-.fi-sidebar-item:hover .fi-sidebar-item-icon, .fi-sidebar-item-active .fi-sidebar-item-icon {
+.fi-sidebar-item:hover .fi-sidebar-item-icon,
+.fi-sidebar-item-active .fi-sidebar-item-icon {
     @apply text-gray-600;
 }
 
-.fi-input, .fi-select-input {
+.fi-input,
+.fi-select-input {
     @apply rounded-md;
     background-color: rgb(250, 250, 250);
+}
+
+.fi-dropdown-panel,
+.fi-ta-filters,
+.fi-modal-window,
+.fi-topbar {
+    background-color: white;
 }
