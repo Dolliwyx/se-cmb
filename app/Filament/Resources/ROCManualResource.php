@@ -140,14 +140,6 @@ class ROCManualResource extends Resource
                 TextColumn::make('remarks')
                     ->label('Remarks')
                     ->searchable(),
-                TextColumn::make('cheque_bank')
-                    ->label('Bank')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('cheque_number')
-                    ->label('Cheque Number')
-                    ->searchable()
-                    ->sortable(),
             ])
             ->filters([
                 Filter::make('created_at')
