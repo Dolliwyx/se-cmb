@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ROCContinousResource extends Resource
 {
-    protected static ?string $model = ROCContinous::class;
+    protected static ?string $model = ContinousReport::class;
 
     protected static ?string $modelLabel = 'Report';
 
