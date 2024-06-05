@@ -3,10 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ROCManualResource\Pages;
-use App\Filament\Resources\ROCManualResource\RelationManagers;
-use App\Models\ROCManual;
-use Filament\Forms;
-use Filament\Checkbox;
+use App\Filament\Resources\ROCManualResource\Pages\CreateROCManual;
+use App\Models\ManualReport;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Select;
@@ -21,11 +19,10 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ROCManualResource extends Resource
 {
-    protected static ?string $model = ROCManual::class;
+    protected static ?string $model = ManualReport::class;
 
     protected static ?string $modelLabel = 'Report';
 
