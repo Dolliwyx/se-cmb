@@ -160,6 +160,11 @@ class ROCContinousResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('transaction_type', 0);
+    }
+
     public static function getRelations(): array
     {
         return [

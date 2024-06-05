@@ -180,6 +180,11 @@ class ROCManualResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('transaction_type', 1);
+    }
+
     public static function getRelations(): array
     {
         return [
