@@ -26,7 +26,7 @@ class ROCManualResource extends Resource
 {
     protected static ?string $model = ManualReport::class;
 
-    protected static ?string $modelLabel = 'Report';
+    protected static ?string $modelLabel = 'Transaction';
 
     protected static ?string $pluralModelLabel = 'Report of Collection (Manual)';
 
@@ -162,10 +162,10 @@ class ROCManualResource extends Resource
                             );
                     })
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-            ])
+            //->actions([
+            //    Tables\Actions\ViewAction::make(),
+            //    Tables\Actions\EditAction::make(),
+            //])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     ExportBulkAction::make()
