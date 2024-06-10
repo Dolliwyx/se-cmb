@@ -164,10 +164,10 @@ class ROCContinousResource extends Resource
                             );
                     })
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-            ])
+            //->actions([
+            //    Tables\Actions\ViewAction::make(),
+            //    Tables\Actions\EditAction::make(),
+            //])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     ExportBulkAction::make()
