@@ -14,7 +14,7 @@ class EditChequesIssued extends EditRecord
     {
         return [
             Actions\ViewAction::make(),
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()->extraAttributes(['style' => 'color: white;']),
         ];
     }
 }

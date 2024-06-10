@@ -30,6 +30,8 @@ class ChequesIssuedResource extends Resource
 
     protected static ?string $slug = 'cheques-issued';
 
+   
+
     public static function form(Form $form): Form
     {
         return $form
