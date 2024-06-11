@@ -30,6 +30,8 @@ class ChequesIssuedResource extends Resource
 
     protected static ?string $slug = 'cheques-issued';
 
+   
+
     public static function form(Form $form): Form
     {
         return $form
@@ -119,10 +121,10 @@ class ChequesIssuedResource extends Resource
                         return $query->when($data['created_at'], fn ($query, $value) => $query->whereDate('created_at', $value));
                     })
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-            ])
+            //->actions([
+            //    Tables\Actions\ViewAction::make(),
+            //    Tables\Actions\EditAction::make(),
+            //])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

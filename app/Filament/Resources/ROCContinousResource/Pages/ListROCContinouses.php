@@ -14,8 +14,11 @@ class ListROCContinouses extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            ExcelImportAction::make()->color('primary'),
-            Actions\CreateAction::make(),
+            ExcelImportAction::make()->color('primary')
+            ->extraAttributes(['style' => 'color: white;']),
+            Actions\CreateAction::make()
+            ->extraAttributes(['style' => 'color: white;'])
+            
         ];
     }
 }

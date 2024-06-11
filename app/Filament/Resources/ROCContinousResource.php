@@ -26,7 +26,7 @@ class ROCContinousResource extends Resource
 {
     protected static ?string $model = ContinousReport::class;
 
-    protected static ?string $modelLabel = 'Report';
+    protected static ?string $modelLabel = 'Transaction';
 
     protected static ?string $pluralModelLabel = 'Report of Collection (Continous)';
 
@@ -164,10 +164,10 @@ class ROCContinousResource extends Resource
                             );
                     })
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-            ])
+            //->actions([
+            //    Tables\Actions\ViewAction::make(),
+            //    Tables\Actions\EditAction::make(),
+            //])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     ExportBulkAction::make()

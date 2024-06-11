@@ -3,7 +3,7 @@
 @config 'tailwind.config.js';
 
 .fi-sidebar-nav {
-    background-color: rgb(43, 44, 135);
+    background-color: #2b2c87;
 }
 
 .fi-sidebar-item-label,
