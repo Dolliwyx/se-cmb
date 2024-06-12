@@ -9,6 +9,8 @@ class FinancialTransaction extends Model
 {
     use HasFactory;
 
+    protected $table = 'financial_transactions';
+
     protected $fillable = [
         'transaction_type',
         'or_number',
