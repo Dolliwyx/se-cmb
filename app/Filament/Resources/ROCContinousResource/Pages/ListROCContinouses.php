@@ -15,10 +15,9 @@ class ListROCContinouses extends ListRecords
     {
         return [
             ExcelImportAction::make()->color('primary')
-            ->extraAttributes(['style' => 'color: white;']),
+                ->extraAttributes(['style' => 'color: white;']),
             Actions\CreateAction::make()
-            ->extraAttributes(['style' => 'color: white;'])
-            
+                ->extraAttributes(['style' => 'color: white;'])
         ];
     }
 }
