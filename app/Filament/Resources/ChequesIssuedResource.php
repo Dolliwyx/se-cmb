@@ -16,7 +16,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\DB;
 
 class ChequesIssuedResource extends Resource
 {
@@ -32,16 +32,26 @@ class ChequesIssuedResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $options = collect(self::getPayables())->mapWithKeys(function ($item) {
+            return [$item[1] => $item[0]];
+        })->toArray();
+
         return $form
             ->schema([
+                Select::make('BUR')
+                    ->label('BUR Number')
+                    ->required()
+                    ->reactive()
+                    ->options($options)
+                    ->searchable(),
                 TextInput::make('cheque_number')
                     ->label('Cheque Number')
                     ->required()
-                    ->unique()
                     ->placeholder('Enter Cheque Number'),
                 TextInput::make('payee')
                     ->label('Payee')
                     ->required()
+                    ->disabled(true)
                     ->placeholder('Enter Payee'),
                 TextInput::make('nature')
                     ->label('Nature')
@@ -51,6 +61,7 @@ class ChequesIssuedResource extends Resource
                     ->label('Amount')
                     ->required()
                     ->numeric()
+                    ->disabled(true)
                     ->inputMode('decimal')
                     ->prefix('PHP')
                     ->placeholder('Enter Amount'),
@@ -145,5 +156,32 @@ class ChequesIssuedResource extends Resource
             'view' => Pages\ViewChequesIssued::route('/{record}'),
             'edit' => Pages\EditChequesIssued::route('/{record}/edit'),
         ];
+    }
+
+    private static function getPayables()
+    {
+        $result = DB::table('payables')
+            ->select(
+                DB::raw('CONCAT(bur, " - ", SupplierName) as formattedString'),
+                'bur'
+            )
+            ->pluck('formattedString', 'bur')
+            ->map(function ($formattedString, $bur) {
+                return [$formattedString, $bur];
+            })
+            ->values()
+            ->toArray();
+        return $result;
+    }
+
+    private static function updateFormFields($bur, $set)
+    {
+        $payable = DB::table('payables')->where('bur', $bur)->first();
+        $particulars = DB::table('particular')->where('BUR', $bur)->sum('ParticularAmount');
+        if ($payable) {
+            $set('BUR', $bur);
+            $set('payee', $payable->SupplierName);
+            $set('amount', $particulars);
+        }
     }
 }
