@@ -54,8 +54,9 @@ class ROCContinousResource extends Resource
                 TextInput::make('student_number')
                     ->label('Student Number')
                     ->required()
+                    ->reactive()
                     ->mask('9999-99999')
-                    ->regex('/\d{4}-\d{5}/')
+                    // ->regex('/\d{4}-\d{5}/')
                     ->placeholder('20XX-XXXXX')
                     ->disabled(fn ($livewire) => $livewire instanceof CreateROCContinous && $livewire->ORExists),
                 Select::make('college')
@@ -71,8 +72,10 @@ class ROCContinousResource extends Resource
                         'CPT' => 'College of Physical Therapy',
                         'CS' => 'College of Science',
                         'COL' => 'College of Law',
+                        'CISTM' => 'College of Information Systems and Technology Management',
                     ])
                     ->placeholder('Select College')
+                    ->searchable()
                     ->disabled(fn ($livewire) => $livewire instanceof CreateROCContinous && $livewire->ORExists),
                 TextInput::make('transaction_code')
                     ->label('Transaction Code')

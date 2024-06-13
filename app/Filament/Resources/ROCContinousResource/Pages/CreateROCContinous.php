@@ -5,6 +5,7 @@ namespace App\Filament\Resources\ROCContinousResource\Pages;
 use App\Filament\Resources\ROCContinousResource;
 use App\Models\ContinousReport;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\DB;
 
 class CreateROCContinous extends CreateRecord
 {
@@ -12,10 +13,16 @@ class CreateROCContinous extends CreateRecord
 
     public bool $ORExists = false;
 
+    public bool $reacted = true;
+
     public function updated($propertyName)
     {
         if ($propertyName === 'data.or_number') {
             $this->updateName();
+        }
+
+        if ($propertyName === 'data.student_number') {
+            $this->updateViaStudentNumber();
         }
     }
 
@@ -31,12 +38,17 @@ class CreateROCContinous extends CreateRecord
             $this->data['bank_number'] = $existingReceipt->bank_number;
             $this->ORExists = true;
         } else {
-            $this->data['payor_name'] = null;
-            $this->data['student_number'] = null;
-            $this->data['college'] = null;
-            $this->data['bank_name'] = null;
-            $this->data['bank_number'] = null;
             $this->ORExists = false;
+        }
+    }
+
+    protected function updateViaStudentNumber()
+    {
+        $studentNumber = str_replace('-', '', $this->data['student_number']);
+        $receivableTransaction = DB::table('invoices')->where('StudentNumber', $studentNumber)->first();
+        if ($receivableTransaction) {
+            $this->data['payor_name'] = $receivableTransaction->StudentName;
+            $this->data['amount'] = $receivableTransaction->Amount;
         }
     }
 }
