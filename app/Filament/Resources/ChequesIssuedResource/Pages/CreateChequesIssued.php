@@ -14,7 +14,7 @@ class CreateChequesIssued extends CreateRecord
 
     public function updated($propertyName)
     {
-        if ($propertyName === 'data.bur') {
+        if ($propertyName === 'data.BUR') {
             $this->updateName();
         }
     }
